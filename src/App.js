@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [computerChoice, setComputerChoice] = useState(null)
@@ -11,7 +11,6 @@ function App() {
   const handleClick = (value) => {
       setUserChoice(value)
       generateComputerChoice()
-      checkResult()
   }
 
   const generateComputerChoice = () => {
@@ -19,9 +18,12 @@ function App() {
     setComputerChoice(randomChoice)
   }
 
+  
+
   const checkResult = () => {
     if(userChoice === computerChoice){
       setResult("You Draw")
+      return
     }
     switch(userChoice){
       case "rock":
@@ -31,13 +33,15 @@ function App() {
           case 'scissors': setResult("You Win")
           break
         }
+        break
       case "paper":
         switch(computerChoice){
           case 'scissors': setResult("You Lose")
           break
           case 'rock': setResult("You Win")
           break
-        } 
+        }
+        break
       case "scissors":
         switch(computerChoice){
           case "rock": setResult('You Win')
@@ -45,15 +49,20 @@ function App() {
           case "paper": setResult('You Lose')
           break
         }
+        break
     }
   }
 
+  useEffect(() => {
+    checkResult()
+  }, [userChoice, computerChoice, checkResult]) 
+
   return (
     <div>
-      <h1>user choice is: {userChoice}</h1>
+      <h1>Make your choice: {userChoice}</h1>
       {choices.map((choice, index) => <button key={index}onClick={() => handleClick(choice)}>{choice}</button>)}
 
-      <h1>computer choice is: {computerChoice}</h1>
+      <h1>Computer choice: {computerChoice}</h1>
 
       <h1>{result}</h1>
       
