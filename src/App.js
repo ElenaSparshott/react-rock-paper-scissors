@@ -30,7 +30,7 @@ function App() {
         switch(computerChoice){
           case 'paper': setResult("You Lose")
           break
-          case 'scissors': setResult("You Win")
+          case 'scissors': setResult("You Win!")
           break
         }
         break

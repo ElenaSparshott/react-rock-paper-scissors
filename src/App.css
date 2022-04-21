@@ -5,6 +5,7 @@ body {
 }
 
 button {
-  align-items: flex-end;
+  flex-grow: 4;
+  background-color: crimson;
 }
 
