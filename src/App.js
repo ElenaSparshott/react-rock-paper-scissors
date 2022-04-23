@@ -59,6 +59,10 @@ function App() {
 
   return (
     <div>
+      <h1>Welcome to Rock, Paper and Scissors Game!!!</h1>
+      <br></br>
+      <h1>Get ready</h1>
+      <br></br>
       <h1>Make your choice: {userChoice}</h1>
       {choices.map((choice, index) => <button key={index}onClick={() => handleClick(choice)}>{choice}</button>)}
 
